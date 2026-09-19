@@ -35,7 +35,9 @@ def signin():
             flash("Username and password are required.", category="error")
             return render_template("competitions/login.html")
 
-        user = db.session.execute(db.select(User).filter_by(username=username)).scalar_one_or_none()
+        user = db.session.execute(
+            db.select(User).filter_by(username=username)
+        ).scalar_one_or_none()
 
         if user and verify_password(user.password, password):
             flash("Logged in successfully!", category="success")
@@ -74,7 +76,9 @@ def signup():
         first_name = first_name.capitalize()
         last_name = last_name.capitalize()
 
-        if db.session.execute(db.select(User).filter_by(username=username)).scalar_one_or_none():
+        if db.session.execute(
+            db.select(User).filter_by(username=username)
+        ).scalar_one_or_none():
             flash("Username already exists.", category="error")
             return render_template("competitions/signup.html")
         if password1 != confirm_password:
@@ -141,7 +145,7 @@ def update_profile():
         db.session.commit()
 
         flash("Profile updated successfully!", category="success")
-    except Exception as e:
+    except Exception:
         db.session.rollback()
         flash("An error occurred while updating your profile.", category="error")
 
@@ -167,11 +171,13 @@ def change_password():
         return redirect(url_for("auth.profile"))
 
     try:
-        current_user.password = generate_password_hash(new_password, method="pbkdf2:sha256")
+        current_user.password = generate_password_hash(
+            new_password, method="pbkdf2:sha256"
+        )
         db.session.commit()
 
         flash("Password updated successfully!", category="success")
-    except Exception as e:
+    except Exception:
         db.session.rollback()
         flash("An error occurred while updating your password.", category="error")
 
@@ -201,7 +207,7 @@ def delete_profile():
         db.session.commit()
         flash("Profile deleted successfully.", category="success")
         return redirect(url_for("auth.signin"))
-    except Exception as e:
+    except Exception:
         db.session.rollback()
         flash("An error occurred while deleting your profile.", category="error")
         return redirect(url_for("auth.profile"))

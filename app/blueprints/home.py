@@ -31,7 +31,6 @@ images_2 = [
 
 @home_bp.route("/")
 def home():
-    now = datetime.now()
     upcoming_events = []
     past_events = []
     for event in events:

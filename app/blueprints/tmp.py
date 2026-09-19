@@ -144,7 +144,7 @@ def cloud_interest_form():
 
 @form_bp.route("/tenet-phase1", methods=["GET"])
 def tenet_phase1():
-    return render_template("tmp/closed_forms_tenet.html") # form closed
+    return render_template("tmp/closed_forms_tenet.html")  # form closed
     if request.method == "POST":
         origin = request.headers.get("Origin")
 
@@ -203,18 +203,17 @@ def tenet_phase1():
 
     return render_template("tmp/tenet.recruitment.phase1.html")
 
+
 @form_bp.route("/tenet-phase2", methods=["GET", "POST"])
 def tenet_phase2():
-    return render_template("tmp/closed_forms_tenet.html") # form closed
+    return render_template("tmp/closed_forms_tenet.html")  # form closed
     if request.method == "POST":
         origin = request.headers.get("Origin")
 
         allowed_origins = ["https://ioit.acm.org"]
 
         if not origin or origin not in allowed_origins:
-            return make_response(
-                jsonify({"error": "Unrestricted"}), 403
-            )
+            return make_response(jsonify({"error": "Unrestricted"}), 403)
 
         data = request.get_json()
         if not data:
@@ -264,18 +263,17 @@ def tenet_phase2():
 
     return render_template("tmp/tenet.recruitment.phase2.html")
 
+
 @form_bp.route("/tenet-phase3", methods=["GET", "POST"])
 def tenet_phase3():
-    return render_template("tmp/closed_forms_tenet.html") # form closed
+    return render_template("tmp/closed_forms_tenet.html")  # form closed
     if request.method == "POST":
         origin = request.headers.get("Origin")
 
         allowed_origins = ["https://ioit.acm.org"]
 
         if not origin or origin not in allowed_origins:
-            return make_response(
-                jsonify({"error": "Unrestricted"}), 403
-            )
+            return make_response(jsonify({"error": "Unrestricted"}), 403)
 
         data = request.get_json()
         if not data:

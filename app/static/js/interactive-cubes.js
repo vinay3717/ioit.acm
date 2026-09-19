@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const vec = new THREE.Vector3();
   const dir = new THREE.Vector3();
   const gap = 0.3;
-  let stride = window.innerWidth <= 768 ? 4 : 5;
+  const stride = window.innerWidth <= 768 ? 4 : 5;
   const displacement = window.innerWidth <= 768 ? 2 : 3.5;
   const intensity = 1;
 

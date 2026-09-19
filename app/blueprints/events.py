@@ -42,6 +42,7 @@ for event in events:
 @events_bp.route("/events/<string:event_slug>")
 def event_detail(event_slug):
     from datetime import datetime
+
     decoded_name = decode_slug(event_slug)
     event = next((e for e in events if e["name"] == decoded_name), None)
     eventname = event["name"] if event else None

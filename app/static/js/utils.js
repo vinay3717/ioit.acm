@@ -57,7 +57,7 @@ const eventImage = document.getElementById("eventImage");
 const overlayText = document.getElementById("overlayText");
 
 if (videoContainer && eventVideo && eventImage && overlayText) {
-  videoContainer.addEventListener("click", function () {
+  videoContainer.addEventListener("click", () => {
     eventImage.style.display = "none";
     overlayText.style.display = "none";
     eventVideo.play();

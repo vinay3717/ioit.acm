@@ -1,9 +1,9 @@
 import * as THREE from "three";
-import TWEEN from "three/addons/libs/tween.module.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import TWEEN from "three/addons/libs/tween.module.js";
 import {
-  CSS3DRenderer,
   CSS3DObject,
+  CSS3DRenderer,
 } from "three/addons/renderers/CSS3DRenderer.js";
 
 const table = [
@@ -313,13 +313,13 @@ function init() {
   controls.addEventListener("change", render);
 
   const buttonTable = document.getElementById("table");
-  buttonTable.addEventListener("click", function () {
+  buttonTable.addEventListener("click", () => {
     currentTarget = "table";
     transform(targets.table, 2000);
   });
 
   const buttonSphere = document.getElementById("sphere");
-  buttonSphere.addEventListener("click", function () {
+  buttonSphere.addEventListener("click", () => {
     currentTarget = "sphere";
     transform(targets.sphere, 2000);
   });
